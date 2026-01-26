@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="450" viewBox="0 0 520 450">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="hexCeiling" width="260" height="225" patternUnits="userSpaceOnUse">
+      <!-- Основной шестиугольник -->
+      <polygon points="260,112.5 195,225 65,225 0,112.5 65,0 195,0"
+               fill="none"
+               stroke="#FFFFFF"
+               stroke-width="2.8"
+               stroke-opacity="1"
+               filter="url(#glow)"/>
+      <!-- Смещенный шестиугольник для бесшовного тайлинга -->
+      <polygon points="390,112.5 325,225 195,225 130,112.5 195,0 325,0"
+               fill="none"
+               stroke="#FFFFFF"
+               stroke-width="2.8"
+               stroke-opacity="1"
+               filter="url(#glow)"/>
+      <!-- Нижний ряд -->
+      <polygon points="325,225 260,337.5 130,337.5 65,225 130,112.5 260,112.5"
+               fill="none"
+               stroke="#FFFFFF"
+               stroke-width="2.8"
+               stroke-opacity="1"
+               filter="url(#glow)"/>
+    </pattern>
+  </defs>
+  <rect width="520" height="450" fill="url(#hexCeiling)"/>
+</svg>
