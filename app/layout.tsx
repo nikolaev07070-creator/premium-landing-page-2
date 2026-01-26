@@ -49,9 +49,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${inter.variable} ${poiretOne.variable} font-sans antialiased`}>
-        <div className="pt-[84px]">
-          {children}
-        </div>
+        {children}
         <Analytics />
       </body>
     </html>

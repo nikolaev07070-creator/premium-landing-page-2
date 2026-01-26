@@ -11,22 +11,24 @@ import { DentalFooter } from "@/components/dental-footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background relative">
-      {/* Grain texture overlay */}
-      <div className="grain-overlay fixed inset-0 pointer-events-none z-0" />
-      
-      <div className="relative z-10">
-        <DentalHeader />
-        <DentalHero />
-        <DentalAbout />
-        <DentalServices />
-        <EquipmentCarousel />
-        <TeamCarousel />
-        <DentalPortfolio />
-        <PriceSection />
-        <DentalContact />
-        <DentalFooter />
-      </div>
-    </main>
+    <>
+      <DentalHeader />
+      <main className="min-h-screen bg-background relative" style={{ paddingTop: 'var(--header-h)' }}>
+        {/* Grain texture overlay */}
+        <div className="grain-overlay fixed inset-0 pointer-events-none z-0" />
+        
+        <div className="relative z-10">
+          <DentalHero />
+          <DentalAbout />
+          <DentalServices />
+          <EquipmentCarousel />
+          <TeamCarousel />
+          <DentalPortfolio />
+          <PriceSection />
+          <DentalContact />
+          <DentalFooter />
+        </div>
+      </main>
+    </>
   );
 }

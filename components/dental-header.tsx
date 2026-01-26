@@ -30,7 +30,7 @@ export function DentalHeader() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-500 backdrop-blur-md bg-black/40 ${
+      className={`fixed top-0 left-0 right-0 w-full z-[9999] transition-all duration-500 backdrop-blur-md bg-black/40 ${
         isScrolled ? "py-3" : "py-5"
       }`}
     >
