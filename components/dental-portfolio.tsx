@@ -1,17 +1,33 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { ExternalLink, X } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
-const portfolioItems = [
+type PortfolioItem = {
+  id: number;
+  title: string;
+  category: string;
+  description: string;
+  before?: string;
+  after?: string;
+  cover?: string;
+  slug?: string;
+};
+
+const portfolioItems: PortfolioItem[] = [
   {
     id: 1,
     title: "Полная реабилитация",
     category: "Цирконий",
     before: "/placeholder.jpg",
     after: "/placeholder.jpg",
-    description: "Полная реабилитация верхней и нижней челюсти с использованием циркониевых коронок",
+    description:
+      "Полная реабилитация верхней и нижней челюсти с использованием циркониевых коронок",
+    cover: "/portfolio/zirconia/00.jpg",
+    slug: "zirconia",
   },
   {
     id: 2,
@@ -56,7 +72,7 @@ const portfolioItems = [
 ];
 
 export function DentalPortfolio() {
-  const [selectedItem, setSelectedItem] = useState<typeof portfolioItems[0] | null>(null);
+  const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
 
   return (
     <>
@@ -81,37 +97,89 @@ export function DentalPortfolio() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {portfolioItems.map((item) => (
-              <div
-                key={item.id}
-                className="glass group relative cursor-pointer overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:border-white/30 hover:shadow-[0_0_20px_rgba(255,255,255,0.25),0_0_40px_rgba(255,255,255,0.15)]"
-                onClick={() => setSelectedItem(item)}
-              >
-                {/* Image placeholder with gradient */}
-                <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/20 flex items-center justify-center relative">
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                  <div className="relative z-10 text-center p-6">
-                    <span className="mb-2 inline-block text-xs font-medium uppercase tracking-wider text-primary">
-                      {item.category}
-                    </span>
-                    <h3 className="mb-2 text-xl font-normal text-foreground">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
+            {portfolioItems.map((item) => {
+              const isAlbum = !!item.slug && !!item.cover;
 
-                {/* Hover overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-background/80 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
-                  <div className="flex items-center gap-2 text-primary">
-                    <span className="font-medium">Смотреть детали</span>
-                    <ExternalLink className="h-5 w-5" />
+              const cardContent = (
+                <>
+                  {/* Cover image or gradient placeholder */}
+                  {isAlbum ? (
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={item.cover as string}
+                        alt={item.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/20 to-transparent" />
+                      <div className="relative z-10 flex h-full items-end p-6">
+                        <div>
+                          <span className="mb-2 inline-block text-xs font-medium uppercase tracking-wider text-primary">
+                            {item.category}
+                          </span>
+                          <h3 className="mb-2 text-xl font-normal text-foreground">
+                            {item.title}
+                          </h3>
+                          <p className="text-sm leading-relaxed text-muted-foreground">
+                            {item.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/20 flex items-center justify-center relative">
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                      <div className="relative z-10 text-center p-6">
+                        <span className="mb-2 inline-block text-xs font-medium uppercase tracking-wider text-primary">
+                          {item.category}
+                        </span>
+                        <h3 className="mb-2 text-xl font-normal text-foreground">
+                          {item.title}
+                        </h3>
+                        <p className="text-sm leading-relaxed text-muted-foreground">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-background/80 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                    {isAlbum ? (
+                      <Link
+                        href={`/portfolio/${item.slug}`}
+                        className="flex items-center gap-2 text-primary"
+                      >
+                        <span className="font-medium">Смотреть детали</span>
+                        <ExternalLink className="h-5 w-5" />
+                      </Link>
+                    ) : (
+                      <div className="flex items-center gap-2 text-primary">
+                        <span className="font-medium">Смотреть детали</span>
+                        <ExternalLink className="h-5 w-5" />
+                      </div>
+                    )}
                   </div>
+                </>
+              );
+
+              return (
+                <div
+                  key={item.id}
+                  className="glass group relative cursor-pointer overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:border-white/30 hover:shadow-[0_0_20px_rgba(255,255,255,0.25),0_0_40px_rgba(255,255,255,0.15)]"
+                  onClick={
+                    isAlbum ? undefined : () => setSelectedItem(item)
+                  }
+                >
+                  {isAlbum ? (
+                    <Link href={`/portfolio/${item.slug}`}>{cardContent}</Link>
+                  ) : (
+                    cardContent
+                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
