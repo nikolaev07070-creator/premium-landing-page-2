@@ -50,6 +50,14 @@ export const metadata: Metadata = {
     locale: "ru_RU",
     siteName: "Esthetic Dental Lab",
     url: "https://edentlab.ru/",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Esthetic Dental Lab — Томск",
+      },
+    ],
   },
   robots: {
     index: true,
@@ -72,6 +80,14 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-icon.png",
   },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Esthetic Dental Lab — цифровая зуботехническая лаборатория в Томске",
+    description:
+      "Цифровая зуботехническая лаборатория в Томске. CAD/CAM, цирконий, E-MAX, виниры, коронки, имплант-протезирование. Полный цифровой цикл — от скана до готовой работы.",
+    images: ["/og.jpg"],
+  },
 };
 
 const localBusinessJsonLd = {
@@ -89,8 +105,19 @@ const localBusinessJsonLd = {
     // TODO: добавить postalCode
   },
   url: "https://edentlab.ru/",
-  telephone: "+79234444141",
-  // TODO: добавить geo (координаты лаборатории)
+  telephone: ["+79234444141", "+7-923-444-41-41"],
+  image: "https://edentlab.ru/og.jpg",
+  priceRange: "$$",
+  openingHoursSpecification: [
+    // TODO: уточнить режим работы; сейчас указаны примерные часы Пн–Пт
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+  ],
+  // TODO: добавить geo (координаты лаборатории) и sameAs (ссылки на соцсети)
 };
 
 export default function RootLayout({

@@ -1,26 +1,28 @@
 "use client";
 
+import Link from "next/link";
 import { MapPin, Phone, Mail, Clock, MessageCircle, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SITE } from "@/lib/site";
 
 const contactInfo = [
   {
     icon: MapPin,
     title: "АДРЕС",
-    value: "г. Томск, ул. Ферганская, 15",
-    subvalue: "Офис работает ежедневно",
+    value: SITE.fullAddress,
+    subvalue: "Офис работает по предварительной договоренности",
   },
   {
     icon: Phone,
     title: "ТЕЛЕФОН",
-    value: "+7 (918) 123-45-67",
-    subvalue: "Звонок бесплатный",
+    value: SITE.phoneDisplay,
+    subvalue: "Для клиник и врачей",
   },
   {
     icon: Mail,
     title: "EMAIL",
-    value: "info@estheticlab.ru",
-    subvalue: "Ответим в течение часа",
+    value: SITE.email,
+    subvalue: "Ответим в рабочее время",
   },
   {
     icon: Clock,
@@ -36,10 +38,17 @@ export function DentalContact() {
       <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-10">
         <div className="section-header mb-16">
           <span className="text-foreground/80 text-sm font-medium uppercase tracking-wider">Связаться с нами</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal mt-4 mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal mt-4 mb-4">
             <span className="text-foreground">Контакты и </span>
             <span className="text-foreground">расположение</span>
           </h2>
+          <p className="max-w-2xl text-sm text-muted-foreground">
+            Смотрите примеры выполненных работ в{" "}
+            <Link href="/portfolio" className="underline underline-offset-4">
+              портфолио
+            </Link>
+            .
+          </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -68,7 +77,7 @@ export function DentalContact() {
                 asChild
                 className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-foreground h-12"
               >
-                <a href="https://wa.me/79181234567" target="_blank" rel="noopener noreferrer">
+                <a href={SITE.whatsappHref} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-4 h-4 mr-2" />
                   WhatsApp
                 </a>
@@ -77,7 +86,7 @@ export function DentalContact() {
                 asChild
                 className="flex-1 bg-blue-500 hover:bg-blue-600 text-foreground h-12"
               >
-                <a href="https://t.me/estheticlab" target="_blank" rel="noopener noreferrer">
+                <a href={SITE.telegramHref} target="_blank" rel="noopener noreferrer">
                   <Send className="w-4 h-4 mr-2" />
                   Telegram
                 </a>
@@ -91,7 +100,7 @@ export function DentalContact() {
               <div className="text-center">
                 <MapPin className="w-12 h-12 text-foreground/60 mx-auto mb-4" />
                 <p className="text-foreground font-medium">Карта загружается...</p>
-                <p className="text-sm text-muted-foreground mt-2">г. Томск, ул. Ферганская, 15</p>
+                <p className="text-sm text-muted-foreground mt-2">{SITE.fullAddress}</p>
               </div>
             </div>
             {/* Actual map would be embedded here with Yandex Maps or similar */}

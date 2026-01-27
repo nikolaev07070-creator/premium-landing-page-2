@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Phone, Mail, MapPin, MessageCircle, Send } from "lucide-react";
+import { SITE } from "@/lib/site";
 
 const footerLinks = {
   services: [
@@ -48,17 +49,17 @@ export function DentalFooter() {
               Цифровая зуботехническая лаборатория. Высокоточная CAD/CAM обработка, эстетика и стабильное качество для клиник и врачей.
             </p>
             <div className="space-y-3">
-              <a href="tel:+79181234567" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <a href={`tel:${SITE.phone}`} className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
                 <Phone className="w-4 h-4 text-primary" />
-                +7 (918) 123-45-67
+                {SITE.phoneDisplay}
               </a>
-              <a href="mailto:info@estheticlab.ru" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <a href={`mailto:${SITE.email}`} className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
                 <Mail className="w-4 h-4 text-primary" />
-                info@estheticlab.ru
+                {SITE.email}
               </a>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4 text-primary" />
-                г. Томск, ул. Ферганская, 15
+                {SITE.fullAddress}
               </div>
             </div>
           </div>
@@ -111,7 +112,7 @@ export function DentalFooter() {
           </p>
           <div className="flex items-center gap-4">
             <a
-              href="https://wa.me/79181234567"
+              href={SITE.whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 hover:bg-emerald-500/30 transition-colors"
@@ -119,7 +120,7 @@ export function DentalFooter() {
               <MessageCircle className="w-5 h-5" />
             </a>
             <a
-              href="https://t.me/estheticlab"
+              href={SITE.telegramHref}
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 hover:bg-blue-500/30 transition-colors"

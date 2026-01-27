@@ -123,7 +123,7 @@ export function DentalPortfolio() {
                     <div className="relative aspect-[4/3] overflow-hidden">
                       <Image
                         src={item.cover as string}
-                        alt={item.title}
+                        alt="Пример реставрации в цирконии — Esthetic Dental Lab, Томск"
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -163,13 +163,10 @@ export function DentalPortfolio() {
                   {/* Hover overlay */}
                   <div className="absolute inset-0 flex items-center justify-center bg-background/80 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
                     {isAlbum ? (
-                      <Link
-                        href={`/portfolio/${item.slug}`}
-                        className="flex items-center gap-2 text-primary"
-                      >
+                      <span className="flex items-center gap-2 text-primary">
                         <span className="font-medium">Смотреть детали</span>
                         <ExternalLink className="h-5 w-5" />
-                      </Link>
+                      </span>
                     ) : (
                       <div className="flex items-center gap-2 text-primary">
                         <span className="font-medium">Смотреть детали</span>
