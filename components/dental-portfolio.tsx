@@ -96,6 +96,22 @@ export function DentalPortfolio() {
             </p>
           </div>
 
+          {/* Внутренняя перелинковка для SEO */}
+          <div className="mb-10 text-sm text-muted-foreground max-w-3xl">
+            <span>
+              Если вы хотите обсудить сотрудничество или заказать расчёт, вы можете{" "}
+              <Link href="/contacts" className="underline underline-offset-4">
+                связаться с нами
+              </Link>{" "}
+              или посмотреть список
+              {" "}
+              <Link href="/#services" className="underline underline-offset-4">
+                услуг лаборатории
+              </Link>
+              .
+            </span>
+          </div>
+
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {portfolioItems.map((item) => {
               const isAlbum = !!item.slug && !!item.cover;

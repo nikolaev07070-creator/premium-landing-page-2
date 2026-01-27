@@ -99,7 +99,7 @@ export function DentalHero() {
               <div className="relative w-[280px] md:w-[360px] lg:w-[500px] xl:w-[600px] h-auto lg:-translate-x-20 lg:-translate-y-10">
                 <Image
                   src={HERO_IMAGE}
-                  alt="Esthetic Dental Lab - Цифровая зуботехническая лаборатория"
+                  alt="Цифровая зуботехническая лаборатория Esthetic Dental Lab — Томск"
                   width={600}
                   height={780}
                   className="object-contain w-full h-auto drop-shadow-[0_0_40px_rgba(255,255,255,0.15)]"

@@ -12,27 +12,27 @@ type ZirconiaImage = {
 const zirconiaImages: ZirconiaImage[] = [
   {
     src: "/portfolio/zirconia/00.jpg",
-    alt: "Цирконий — общий вид работы",
+    alt: "Портфолио: цирконий — Esthetic Dental Lab, Томск (общий вид работы)",
   },
   {
     src: "/portfolio/zirconia/01.ipg.png",
-    alt: "Цирконий — пример работы 1",
+    alt: "Портфолио: цирконий — Esthetic Dental Lab, Томск (пример работы 1)",
   },
   {
     src: "/portfolio/zirconia/02.ipg.png",
-    alt: "Цирконий — пример работы 2",
+    alt: "Портфолио: цирконий — Esthetic Dental Lab, Томск (пример работы 2)",
   },
   {
     src: "/portfolio/zirconia/03.ipg.png",
-    alt: "Цирконий — пример работы 3",
+    alt: "Портфолио: цирконий — Esthetic Dental Lab, Томск (пример работы 3)",
   },
   {
     src: "/portfolio/zirconia/04.ipg.png",
-    alt: "Цирконий — пример работы 4",
+    alt: "Портфолио: цирконий — Esthetic Dental Lab, Томск (пример работы 4)",
   },
   {
     src: "/portfolio/zirconia/05.ipg.png",
-    alt: "Цирконий — пример работы 5",
+    alt: "Портфолио: цирконий — Esthetic Dental Lab, Томск (пример работы 5)",
   },
 ];
 
