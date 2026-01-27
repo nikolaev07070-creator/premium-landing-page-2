@@ -101,17 +101,26 @@ export function DentalContact() {
                 <MapPin className="w-12 h-12 text-foreground/60 mx-auto mb-4" />
                 <p className="text-foreground font-medium">Карта загружается...</p>
                 <p className="text-sm text-muted-foreground mt-2">{SITE.fullAddress}</p>
+                <a
+                  href="https://yandex.ru/maps/?ll=84.964582,56.520315&z=17&pt=84.964582,56.520315,pm2rdl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-full border border-white/20 text-xs text-foreground hover:bg-white/5 transition-colors"
+                >
+                  Открыть в Яндекс Картах
+                </a>
               </div>
             </div>
-            {/* Actual map would be embedded here with Yandex Maps or similar */}
+            {/* Actual map embedded via Yandex widget */}
             <iframe
-              src="https://yandex.ru/map-widget/v1/?um=constructor%3A0&amp;source=constructor&amp;ll=84.95%2C56.5&amp;z=15"
+              src="https://yandex.ru/map-widget/v1/?ll=84.964582%2C56.520315&z=17&pt=84.964582%2C56.520315%2Cpm2rdl"
               width="100%"
               height="100%"
               style={{ border: 0, filter: "invert(0.9) hue-rotate(180deg)" }}
               allowFullScreen
               loading="lazy"
-              title="Карта офиса Esthetic Dental Lab"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Карта — Esthetic Dental Lab"
             />
           </div>
         </div>
