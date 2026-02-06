@@ -13,7 +13,13 @@ export function DentalHero() {
       {/* BACKGROUND LAYERS */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* Чистые соты */}
-        <div className="heroHoneycomb absolute inset-0" />
+        <div className="heroHoneycomb absolute inset-0">
+          <div className="heroHoneycombBase absolute inset-0" />
+          <div className="heroHoneycombPatch heroHoneycombPatch1 absolute inset-0" />
+          <div className="heroHoneycombPatch heroHoneycombPatch2 absolute inset-0" />
+          <div className="heroHoneycombPatch heroHoneycombPatch3 absolute inset-0" />
+          <div className="heroHoneycombPatch heroHoneycombPatch4 absolute inset-0" />
+        </div>
 
         {/* (Опционально) мягкая подсветка — очень слабая, чтобы не мутнить hero */}
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -96,15 +102,15 @@ export function DentalHero() {
 
             {/* Right Side - Hero Image */}
             <div className="relative flex items-center justify-center lg:justify-end lg:ml-12 xl:ml-16">
-              <div className="relative w-[280px] md:w-[360px] lg:w-[500px] xl:w-[600px] h-auto lg:-translate-x-20 lg:-translate-y-10">
+              <div className="relative w-[280px] md:w-[360px] lg:w-[600px] xl:w-[720px] h-auto lg:-translate-x-[190px] lg:-translate-y-10 lg:scale-110 origin-center">
                 <Image
-                  src={HERO_IMAGE}
-                  alt="Цифровая зуботехническая лаборатория Esthetic Dental Lab — Томск"
-                  width={600}
-                  height={780}
+                  src="/lab/hero-teeth1.png"
+                  alt="Dental art sculpture"
+                  width={720}
+                  height={936}
                   className="object-contain w-full h-auto drop-shadow-[0_0_40px_rgba(255,255,255,0.15)]"
                   priority
-                  sizes="(max-width: 768px) 280px, (max-width: 1024px) 360px, (max-width: 1280px) 500px, 600px"
+                  sizes="(max-width: 768px) 280px, (max-width: 1024px) 360px, (max-width: 1280px) 600px, 720px"
                 />
               </div>
             </div>
