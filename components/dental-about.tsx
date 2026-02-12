@@ -15,13 +15,13 @@ export function DentalAbout() {
               Где инновации встречаются с{" "}
               <span className="text-foreground">традицией</span>
             </h2>
-            <p className="mb-8 text-lg font-light leading-relaxed text-muted-foreground">
+            <p className="mb-8 text-base font-normal text-foreground/90 leading-relaxed">
               Esthetic Dental Lab — это современная цифровая зуботехническая лаборатория, 
               которая сочетает передовые технологии CAD/CAM с проверенным мастерством. 
               Мы обеспечиваем полный цифровой цикл — от сканирования до готовой работы 
               с контролируемым результатом.
             </p>
-            <p className="text-base font-light leading-relaxed text-muted-foreground">
+            <p className="text-base font-normal text-foreground/90 leading-relaxed">
               Наша приверженность совершенству сделала нас надежным партнером для 
               ведущих стоматологических клиник. Каждый случай получает персональное 
               внимание от нашей команды мастеров-техников.

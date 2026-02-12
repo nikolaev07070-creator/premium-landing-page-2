@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import { SITE } from "@/lib/site";
 
@@ -33,8 +34,15 @@ export function DentalFooter() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/30">
-                <span className="text-foreground font-normal text-2xl">E</span>
+              <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/30 p-0">
+                <Image
+                  src="/lab/logo.png"
+                  alt="Esthetic Dental Lab Logo"
+                  width={48}
+                  height={48}
+                  className="w-[132%] h-[132%] object-contain scale-[1.32] origin-center"
+                  priority
+                />
               </div>
               <div className="flex flex-col">
                 <span className="text-lg font-normal tracking-tight leading-tight">

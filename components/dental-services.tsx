@@ -5,13 +5,13 @@ import { Cpu, Clock, Shield, Users, CheckCircle, Sparkles } from "lucide-react";
 const services = [
   {
     icon: Cpu,
-    title: "CAD/CAM фрезеровка",
+    title: "Полный цикл CAD/CAM производства",
     description: "Высокоточная цифровая обработка материалов с использованием передовых технологий",
   },
   {
     icon: Sparkles,
-    title: "Цирконий, E-max, PMMA",
-    description: "Работа с премиальными материалами для максимальной эстетики и прочности",
+    title: "Диоксид циркония, Дисиликат лития, PMMA, Титан, Кобальт-хром (CoCr)",
+    description: "Максимальная эстетика и прочность",
   },
   {
     icon: Clock,
@@ -45,13 +45,10 @@ export function DentalServices() {
 
       <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-10">
         <div className="mb-16 section-header">
-          <span className="mb-4 inline-block text-xs font-light tracking-widest text-foreground/80 uppercase">
-            Наши Услуги
-          </span>
           <h2 className="mb-6 text-3xl font-normal leading-tight text-foreground md:text-4xl lg:text-5xl text-balance">
             Комплексные <span className="text-foreground">решения</span>
           </h2>
-          <p className="max-w-2xl text-lg font-light text-muted-foreground">
+          <p className="max-w-2xl text-xs font-light tracking-widest text-foreground/80 uppercase leading-normal">
             От простых реставраций до сложных полных реабилитаций — мы обеспечиваем превосходство на каждом уровне.
           </p>
         </div>
@@ -67,9 +64,17 @@ export function DentalServices() {
                 <service.icon className="h-7 w-7 text-foreground" />
               </div>
               <h3 className="mb-3 text-xl font-normal text-foreground">
-                {service.title}
+                {service.title === "Диоксид циркония, Дисиликат лития, PMMA, Титан, Кобальт-хром (CoCr)" ? (
+                  <>
+                    Диоксид циркония, Дисиликат лития, PMMA, Титан
+                    <br />
+                    Кобальт-хром (CoCr)
+                  </>
+                ) : (
+                  service.title
+                )}
               </h3>
-              <p className="text-sm font-light leading-relaxed text-muted-foreground">
+              <p className="text-base font-normal text-foreground/90 leading-relaxed">
                 {service.description}
               </p>
             </div>

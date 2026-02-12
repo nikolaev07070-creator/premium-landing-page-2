@@ -16,14 +16,14 @@ const equipmentItems = [
     id: 2,
     name: "Formlabs Form 3B+",
     category: "3D-принтер",
-    image: "/equipment/formlabs-form3b.jpg",
+    image: "/lab/10.jpg",
     icon: Printer,
   },
   {
     id: 3,
     name: "3Shape TRIOS",
     category: "Интраоральный сканер",
-    image: "/equipment/3shape-trios.jpg",
+    image: "/lab/09.jpg",
     icon: Scan,
   },
   {
@@ -37,7 +37,7 @@ const equipmentItems = [
     id: 5,
     name: "Amann Girrbach",
     category: "Артикуляторы",
-    image: "/equipment/amann-girrbach.jpg",
+    image: "/lab/15.jpg",
     icon: Settings,
   },
   {
@@ -58,7 +58,7 @@ const equipmentItems = [
     id: 8,
     name: "Asiga Max UV",
     category: "3D-принтер",
-    image: "/equipment/asiga-max.jpg",
+    image: "/lab/11.jpg",
     icon: Printer,
   },
   {
@@ -72,7 +72,7 @@ const equipmentItems = [
     id: 10,
     name: "Ivoclar",
     category: "Материалы",
-    image: "/equipment/ivoclar.jpg",
+    image: "/lab/16.jpg",
     icon: Package,
   },
   {
@@ -179,14 +179,11 @@ export function EquipmentCarousel() {
 
       <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-10">
         <div className="mb-16 section-header">
-          <span className="mb-4 inline-block text-xs font-light tracking-widest text-foreground/80 uppercase">
-            Наше Оборудование
-          </span>
-          <h2 className="mb-6 text-3xl font-normal leading-tight text-foreground md:text-4xl lg:text-5xl text-balance">
+          <h2 className="mb-4 text-3xl font-normal leading-tight text-foreground md:text-4xl lg:text-5xl text-balance">
             <span className="text-foreground">НАШЕ ОБОРУДОВАНИЕ</span>
           </h2>
-          <p className="max-w-2xl text-sm font-light text-muted-foreground">
-            Современный парк CAD/CAM и лабораторного оборудования для высокой точности и стабильного качества.
+          <p className="max-w-2xl text-xs font-light tracking-widest text-foreground/80 uppercase leading-normal">
+            Современный парк цифрового и лабораторного оборудования для высокой точности и стабильного качества.
           </p>
         </div>
 
@@ -237,15 +234,33 @@ export function EquipmentCarousel() {
               >
                 {/* Image/Icon Container - empty container for image */}
                 <div className="w-full h-[160px] mb-4 flex items-center justify-center relative">
-                  {item.id === 1 || item.id === 4 || item.id === 6 || item.id === 7 || item.id === 9 || item.id === 11 ? (
-                    // Roland DWX-52D (id: 1), 3Shape E-series (id: 4), Programat (id: 6), Dekema (id: 7), VHF K5 (id: 9), and VHF E5 (id: 11) - show real image without cropping
+                  {item.id === 1 || item.id === 2 || item.id === 3 || item.id === 4 || item.id === 5 || item.id === 6 || item.id === 7 || item.id === 8 || item.id === 9 || item.id === 10 || item.id === 11 ? (
+                    // Roland DWX-52D (id: 1), Formlabs Form 3B+ (id: 2), 3Shape TRIOS (id: 3), 3Shape E-series (id: 4), Amann Girrbach (id: 5), Programat (id: 6), Dekema (id: 7), Asiga Max UV (id: 8), VHF K5 (id: 9), Ivoclar (id: 10), and VHF E5 (id: 11) - show real image without cropping
                     <Image
                       src={item.image}
-                      alt={item.id === 1 ? "Roland DWX-52D milling machine (Redon Hybrid)" : item.id === 4 ? "3Shape E-series laboratory scanner" : item.id === 11 ? "VHF E5 milling machine" : item.name}
+                      alt={
+                        item.id === 1
+                          ? "Roland DWX-52D milling machine (Redon Hybrid)"
+                          : item.id === 2
+                          ? "Formlabs Form 3B+ 3D printer"
+                          : item.id === 3
+                          ? "3Shape TRIOS intraoral scanner"
+                          : item.id === 4
+                          ? "3Shape E-series laboratory scanner"
+                          : item.id === 5
+                          ? "Amann Girrbach articulators"
+                          : item.id === 8
+                          ? "Asiga Max UV 3D printer"
+                          : item.id === 10
+                          ? "Ivoclar materials"
+                          : item.id === 11
+                          ? "VHF E5 milling machine"
+                          : item.name
+                      }
                       width={240}
                       height={160}
                       className="object-contain w-full h-full max-w-full"
-                      style={{ maxWidth: item.id === 1 || item.id === 11 ? '280px' : '100%' }}
+                      style={{ maxWidth: item.id === 1 || item.id === 2 || item.id === 11 ? '280px' : '100%' }}
                       loading="lazy"
                       sizes="(max-width: 768px) 240px, 280px"
                       onError={(e) => {

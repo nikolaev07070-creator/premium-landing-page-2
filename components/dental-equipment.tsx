@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { Cpu, Printer, Scan, Flame } from "lucide-react";
 import {
   Accordion,
@@ -155,8 +156,18 @@ export function DentalEquipment() {
             >
               {/* Header */}
               <div className="mb-6 flex items-start gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-white/5 group-hover:bg-white/10 transition-colors duration-300 flex-shrink-0">
-                  <item.icon className="h-7 w-7 text-primary" />
+                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-white/5 group-hover:bg-white/10 transition-colors duration-300 flex-shrink-0 overflow-hidden">
+                  {item.model === "3Shape TRIOS / лабораторный сканер" ? (
+                    <Image
+                      src="/lab/09.jpg"
+                      alt="3Shape TRIOS"
+                      width={160}
+                      height={160}
+                      className="h-14 w-14 object-contain"
+                    />
+                  ) : (
+                    <item.icon className="h-7 w-7 text-primary" />
+                  )}
                 </div>
                 <div className="flex-1">
                   <div className="mb-2 flex items-center gap-2">

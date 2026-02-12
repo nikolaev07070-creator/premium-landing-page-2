@@ -37,14 +37,13 @@ export function DentalContact() {
     <section id="contacts" className="py-24 relative">
       <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-10">
         <div className="section-header mb-16">
-          <span className="text-foreground/80 text-sm font-medium uppercase tracking-wider">Связаться с нами</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal mt-4 mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal mb-4">
             <span className="text-foreground">Контакты и </span>
             <span className="text-foreground">расположение</span>
           </h2>
-          <p className="max-w-2xl text-sm text-muted-foreground">
+          <p className="max-w-2xl text-xs font-light tracking-widest text-foreground/80 uppercase leading-normal">
             Смотрите примеры выполненных работ в{" "}
-            <Link href="/portfolio" className="underline underline-offset-4">
+            <Link href="/portfolio" className="underline underline-offset-4 hover:text-foreground transition-colors">
               портфолио
             </Link>
             .

@@ -117,13 +117,10 @@ export function PriceSection() {
       <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-10">
         {/* Header */}
         <div className="mb-16 section-header">
-          <span className="mb-4 inline-block text-xs font-light tracking-widest text-foreground/80 uppercase">
-            Стоимость услуг
-          </span>
-          <h2 className="mb-6 text-3xl font-normal leading-tight text-foreground md:text-4xl lg:text-5xl text-balance">
+          <h2 className="mb-4 text-3xl font-normal leading-tight text-foreground md:text-4xl lg:text-5xl text-balance">
             <span className="text-foreground">ПРАЙС</span>
           </h2>
-          <p className="max-w-2xl text-lg font-light text-muted-foreground">
+          <p className="max-w-2xl text-xs font-light tracking-widest text-foreground/80 uppercase leading-normal">
             Прозрачные цены на все виды услуг. Индивидуальный расчет для каждого случая.
           </p>
         </div>
@@ -177,7 +174,7 @@ export function PriceSection() {
             <h3 className="text-2xl font-normal text-foreground mb-2" style={{ letterSpacing: '0.02em' }}>
               Детальный <span className="text-foreground">прайс-лист</span>
             </h3>
-            <p className="text-sm font-light text-muted-foreground">
+            <p className="text-xs font-light tracking-widest text-foreground/80 uppercase leading-normal">
               Подробная информация по всем услугам
             </p>
           </div>

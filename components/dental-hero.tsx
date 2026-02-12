@@ -29,12 +29,8 @@ export function DentalHero() {
         <div className="grain-overlay opacity-20" />
       </div>
 
-      {/* Left Vertical Brand Text */}
-      <div className="absolute left-8 top-1/2 -translate-y-1/2 hidden xl:block z-10 pointer-events-none">
-        <div className="vertical-text text-2xl font-normal text-muted-foreground/20 uppercase tracking-[0.3em]">
-          ESTHETIC DENTAL
-        </div>
-      </div>
+      {/* HONEYCOMB COVER: перекрывает соты слева, плавно исчезает справа, с "окном" внизу */}
+      <div className="heroHoneycombCover absolute inset-0 z-10 pointer-events-none" />
 
       {/* Vertical Label */}
       <div className="hero-vertical-label z-10 pointer-events-none" aria-hidden="true">
@@ -71,7 +67,7 @@ export function DentalHero() {
                 <span className="text-foreground block">ЛАБОРАТОРИЯ</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed">
+              <p className="max-w-xl mb-10 text-xs font-light tracking-widest text-foreground/80 uppercase leading-normal">
                 Высокоточная CAD/CAM обработка, эстетика и стабильное качество для клиник и врачей.
                 <br className="hidden md:block" />
                 Полный цифровой цикл — от скана до готовой работы с контролируемым результатом.

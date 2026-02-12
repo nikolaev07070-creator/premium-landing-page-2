@@ -84,28 +84,24 @@ export function DentalPortfolio() {
 
         <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-10">
           <div className="mb-16 section-header">
-            <p className="mb-4 text-sm font-medium uppercase tracking-wider text-foreground/80">
-              Наши Работы
-            </p>
             <h2 className="mb-4 text-3xl font-normal text-foreground md:text-4xl lg:text-5xl">
-              <span className="text-foreground">Портфолио </span>
-              <span className="text-foreground">проектов</span>
+              <span className="text-foreground">Портфолио</span>
             </h2>
-            <p className="max-w-2xl text-muted-foreground">
+            <p className="max-w-2xl text-xs font-light tracking-widest text-foreground/80 uppercase leading-normal">
               Примеры наших работ, демонстрирующие качество и эстетику выполненных реставраций.
             </p>
           </div>
 
           {/* Внутренняя перелинковка для SEO */}
-          <div className="mb-10 text-sm text-muted-foreground max-w-3xl">
-            <span>
+          <div className="mb-10 max-w-2xl">
+            <span className="text-xs font-light tracking-widest text-foreground/80 uppercase leading-normal">
               Если вы хотите обсудить сотрудничество или заказать расчёт, вы можете{" "}
-              <Link href="/contacts" className="underline underline-offset-4">
+              <Link href="/contacts" className="underline underline-offset-4 hover:text-foreground transition-colors">
                 связаться с нами
               </Link>{" "}
               или посмотреть список
               {" "}
-              <Link href="/#services" className="underline underline-offset-4">
+              <Link href="/#services" className="underline underline-offset-4 hover:text-foreground transition-colors">
                 услуг лаборатории
               </Link>
               .
