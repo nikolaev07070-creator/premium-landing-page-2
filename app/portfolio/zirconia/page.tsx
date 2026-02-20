@@ -45,12 +45,12 @@ export default function ZirconiaPortfolioPage() {
                   href={`/portfolio/zirconia/${case_.id}`}
                   className="group glass relative cursor-pointer overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:border-white/30 hover:shadow-[0_0_20px_rgba(255,255,255,0.25),0_0_40px_rgba(255,255,255,0.15)]"
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                  <div className="relative aspect-[4/3] overflow-hidden flex items-center justify-center p-3 bg-black/35">
                     <Image
                       src={case_.cover}
                       alt={`Кейс ${case_.id}`}
                       fill
-                      className="object-cover"
+                      className="object-contain"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/20 to-transparent" />

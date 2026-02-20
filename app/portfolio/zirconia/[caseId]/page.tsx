@@ -23,7 +23,7 @@ export default async function ZirconiaCasePage({ params }: Props) {
           </div>
 
           <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-10">
-            <CaseGallery images={case_.images} />
+            <CaseGallery images={case_.images} layout={case_.layout} />
           </div>
         </section>
       </div>

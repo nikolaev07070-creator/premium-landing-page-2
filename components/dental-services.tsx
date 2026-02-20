@@ -65,11 +65,13 @@ export function DentalServices() {
               </div>
               <h3 className="mb-3 text-xl font-normal text-foreground">
                 {service.title === "Диоксид циркония, Дисиликат лития, PMMA, Титан, Кобальт-хром (CoCr)" ? (
-                  <>
-                    Диоксид циркония, Дисиликат лития, PMMA, Титан
-                    <br />
-                    Кобальт-хром (CoCr)
-                  </>
+                  <span className="block space-y-1 leading-relaxed">
+                    <span className="block">Диоксид циркония</span>
+                    <span className="block">Дисиликат лития</span>
+                    <span className="block">PMMA</span>
+                    <span className="block">Титан</span>
+                    <span className="block">Кобальт-хром (CoCr)</span>
+                  </span>
                 ) : (
                   service.title
                 )}
