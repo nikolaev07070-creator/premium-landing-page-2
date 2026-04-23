@@ -14,6 +14,9 @@ export default async function ZirconiaCasePage({ params }: Props) {
     notFound();
   }
 
+  const heading = case_.pageTitle ?? `Кейс ${case_.id}`
+  const sub = case_.pageDescription
+
   return (
     <main className="min-h-screen bg-background">
       <div className="pt-24 pb-16">
@@ -23,6 +26,19 @@ export default async function ZirconiaCasePage({ params }: Props) {
           </div>
 
           <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-10">
+            <header className="mb-12 max-w-3xl">
+              <p className="mb-2 text-xs font-medium uppercase tracking-widest text-primary">
+                Цирконий · портфолио
+              </p>
+              <h1 className="mb-4 text-3xl font-normal leading-tight text-foreground md:text-4xl lg:text-5xl">
+                {heading}
+              </h1>
+              {sub ? (
+                <p className="text-sm font-light tracking-wide text-foreground/80 md:text-base">
+                  {sub}
+                </p>
+              ) : null}
+            </header>
             <CaseGallery images={case_.images} layout={case_.layout} />
           </div>
         </section>

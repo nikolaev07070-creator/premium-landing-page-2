@@ -5,6 +5,9 @@ export type ZirconiaCase = {
   cover: string
   images: ZirconiaCaseImage[]
   layout?: "default" | "landscape"
+  /** Заголовок и описание на странице просмотра кейса */
+  pageTitle?: string
+  pageDescription?: string
 }
 
 export const zirconiaCases: ZirconiaCase[] = [
@@ -39,6 +42,9 @@ export const zirconiaCases: ZirconiaCase[] = [
   {
     id: "09",
     cover: "/portfolio/zirconia/1Y7A.jpg",
+    pageTitle: "Работа #3 (цирконий)",
+    pageDescription:
+      "Серия работ из диоксида циркония — полная галерея этапов и результата.",
     images: [
       "/portfolio/zirconia/1Y7.jpg",
       "/portfolio/zirconia/1Y7A.jpg",
@@ -52,6 +58,8 @@ export const zirconiaCases: ZirconiaCase[] = [
     id: "10",
     cover: "/portfolio/zirconia/1Q7A.jpg",
     layout: "landscape",
+    pageTitle: "Работа #4",
+    pageDescription: "Серия работ из диоксида циркония — полная галерея.",
     images: [
       { src: "/portfolio/zirconia/1Q7A.jpg" },
       { src: "/portfolio/zirconia/1Q7A7671.jpg" },

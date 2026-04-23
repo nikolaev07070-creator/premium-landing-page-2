@@ -9,9 +9,9 @@ const HERO_IMAGE = "/lab/hero-teeth1.png";
 
 export function DentalHero() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-background">
+    <section className="relative min-h-screen overflow-visible bg-background">
       {/* BACKGROUND LAYERS */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Чистые соты */}
         <div className="heroHoneycomb absolute inset-0">
           <div className="heroHoneycombBase absolute inset-0" />
@@ -56,9 +56,9 @@ export function DentalHero() {
       </div>
 
       {/* CONTENT */}
-      <div className="relative z-20 min-h-screen flex items-center justify-center">
-        <div className="container mx-auto px-4 pb-12">
-          <div className="grid lg:grid-cols-[1fr_1.3fr] gap-16 lg:gap-24 items-center max-w-7xl mx-auto">
+      <div className="relative z-20 min-h-screen flex items-center justify-center overflow-visible">
+        <div className="container mx-auto overflow-visible px-4 pb-12">
+          <div className="mx-auto grid max-w-7xl items-center gap-16 overflow-visible lg:grid-cols-[1fr_1.3fr] lg:gap-24">
             {/* Left Content */}
             <div className="text-left">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal leading-tight mb-8">
@@ -96,17 +96,17 @@ export function DentalHero() {
               </div>
             </div>
 
-            {/* Right Side - Hero Image */}
-            <div className="relative flex items-center justify-center lg:justify-end lg:ml-12 xl:ml-16">
-              <div className="relative w-[280px] md:w-[360px] lg:w-[600px] xl:w-[720px] h-auto lg:-translate-x-[190px] lg:-translate-y-10 lg:scale-110 origin-center">
+            {/* Right Side - Hero Image (крупная, у правого края, частично за экраном) */}
+            <div className="relative min-h-[280px] w-full overflow-visible lg:min-h-[640px]">
+              <div className="pointer-events-none absolute right-[-120px] top-1/2 h-[800px] w-[800px] -translate-y-1/2">
                 <Image
-                  src="/lab/hero-teeth1.png"
-                  alt="Dental art sculpture"
-                  width={720}
-                  height={936}
-                  className="object-contain w-full h-auto drop-shadow-[0_0_40px_rgba(255,255,255,0.15)]"
+                  src={HERO_IMAGE}
+                  alt="Hero"
+                  width={800}
+                  height={800}
+                  className="h-full w-full scale-125 object-contain"
                   priority
-                  sizes="(max-width: 768px) 280px, (max-width: 1024px) 360px, (max-width: 1280px) 600px, 720px"
+                  sizes="(max-width: 640px) 100vw, 800px"
                 />
               </div>
             </div>

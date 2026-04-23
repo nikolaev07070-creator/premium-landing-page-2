@@ -47,6 +47,8 @@ const portfolioItems: PortfolioItem[] = [
     before: "/placeholder.jpg",
     after: "/placeholder.jpg",
     description: "Передние зубы восстановлены с максимальной эстетикой",
+    cover: "/portfolio/zirconia/1Y7A.jpg",
+    slug: "zirconia/09",
   },
   {
     id: 3,
@@ -55,6 +57,8 @@ const portfolioItems: PortfolioItem[] = [
     before: "/placeholder.jpg",
     after: "/placeholder.jpg",
     description: "Коронки на имплантах с индивидуальными абатментами",
+    cover: "/portfolio/zirconia/1Q7A.jpg",
+    slug: "zirconia/10",
   },
   {
     id: 4,
@@ -84,33 +88,17 @@ const portfolioItems: PortfolioItem[] = [
 
 const featuredCount = 3;
 
-/** Работа #3 в карусели: Zirconia, серия 1Y7… — превью и галерея в lib/portfolio/zirconiaCases.ts (id "09") */
-const featuredZirconiaWork3: PortfolioItem = {
-  id: 10,
-  title: "Работа #3 (цирконий)",
-  category: "Цирконий",
-  description: "Серия работ из диоксида циркония.",
-  cover: "/portfolio/zirconia/1Y7A.jpg",
-  slug: "zirconia/09",
-};
+const PORTFOLIO_CAROUSEL_COUNT = 24;
 
-/** Работа #4 в карусели: Zirconia, серия 1Q7A… — превью и галерея в lib/portfolio/zirconiaCases.ts (id "10") */
-const featuredWork4: PortfolioItem = {
-  id: 8,
-  title: "Работа #4",
-  category: "Цирконий",
-  description: "Серия работ из диоксида циркония.",
-  cover: "/portfolio/zirconia/1Q7A.jpg",
-  slug: "zirconia/10",
-};
-/** Работа #5 в карусели портфолио (cover не задан — подставьте свои фото в cover, slug при необходимости) */
-const featuredWork5: PortfolioItem = {
-  id: 9,
-  title: "Работа #5",
-  category: "Цирконий",
-  description: "Пример работы из портфолио. Описание и этапы — на странице кейса.",
-  slug: "work/5",
-};
+/** Слайды карусели «Портфолио»: kar1.JPG … kar24.JPG в public/portfolio/ */
+const portfolioCarouselSlides = Array.from({ length: PORTFOLIO_CAROUSEL_COUNT }, (_, i) => {
+  const n = i + 1;
+  const cacheBust = n >= 22 ? "?v=2" : "";
+  return {
+    id: 3000 + n,
+    src: `/portfolio/kar${n}.JPG${cacheBust}`,
+  };
+});
 
 const PORTFOLIO_CARD_WIDTH = 320;
 const PORTFOLIO_CARD_GAP = 24;
@@ -119,15 +107,6 @@ export function DentalPortfolio() {
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
   const featured = portfolioItems.slice(0, featuredCount);
   const caseItems = portfolioItems;
-  const featuredDisplay: PortfolioItem[] = [caseItems[0], ...featured.slice(1)];
-  /** 5 карточек в карусели: Работа #1..#5 (третья — Zirconia кейс 09, галерея 1Y7…) */
-  const featuredCarouselItems: PortfolioItem[] = [
-    featuredDisplay[0],
-    featuredDisplay[1],
-    featuredZirconiaWork3,
-    featuredWork4,
-    featuredWork5,
-  ];
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -201,7 +180,6 @@ export function DentalPortfolio() {
         </div>
 
         <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-10">
-          {/* Section header */}
           <div className="mb-16 section-header">
             <h2 className="mb-4 text-3xl font-normal leading-tight text-foreground md:text-4xl lg:text-5xl text-balance">
               <span className="text-foreground">Портфолио</span>
@@ -211,7 +189,6 @@ export function DentalPortfolio() {
             </p>
           </div>
 
-          {/* Карусель 5 карточек (как в «Наша команда»): стрелки, свайп/drag, snap */}
           <div className="relative mb-20">
             {canScrollLeft && (
               <button
@@ -242,70 +219,35 @@ export function DentalPortfolio() {
                 overscrollBehaviorX: "contain",
               }}
             >
-              {featuredCarouselItems.map((item, index) => {
-                const hasDetailPage = !!item.slug && !!item.cover;
-                const cardContent = (
-                  <>
-                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-black/35 flex items-center justify-center p-2">
-                      {item.cover ? (
-                        <Image
-                          src={item.cover}
-                          alt=""
-                          fill
-                          className="object-contain transition-transform duration-300 group-hover:scale-105"
-                          sizes="(max-width: 768px) 280px, 320px"
-                        />
-                      ) : (
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent" />
-                      )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                    </div>
-                    <div className="border-t border-white/10 px-5 py-4">
-                      <p className="text-sm font-medium text-foreground/90">
-                        Работа #{index + 1}
-                      </p>
-                    </div>
-                    <span className="absolute inset-0 flex items-center justify-center bg-background/60 opacity-0 backdrop-blur-[2px] transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
-                      <span className="flex items-center gap-2 text-sm font-medium text-primary">
-                        {hasDetailPage ? (
-                          <>
-                            Смотреть
-                            <ExternalLink className="h-4 w-4" />
-                          </>
-                        ) : (
-                          "Подробнее"
-                        )}
-                      </span>
-                    </span>
-                  </>
-                );
-                return (
-                  <div
-                    key={item.id}
-                    className={`glass-card group relative flex-shrink-0 w-[280px] md:w-[320px] overflow-hidden rounded-2xl border border-white/10 transition-all duration-300 snap-start cursor-pointer ${
-                      !isDragging ? "hover:border-white/20 hover:shadow-[0_0_24px_rgba(255,255,255,0.08)] hover:scale-[1.02]" : ""
-                    }`}
-                    style={{
-                      willChange: isDragging ? "transform" : "auto",
-                      transform: isDragging ? "translateZ(0)" : undefined,
-                    }}
-                  >
-                    {hasDetailPage ? (
-                      <Link href={`/portfolio/${item.slug}`} className="block">
-                        {cardContent}
-                      </Link>
-                    ) : (
-                      <button
-                        type="button"
-                        className="block w-full text-left"
-                        onClick={() => setSelectedItem(item)}
-                      >
-                        {cardContent}
-                      </button>
-                    )}
+              {portfolioCarouselSlides.map((slide, index) => (
+                <div
+                  key={slide.id}
+                  className={`glass-card group relative flex-shrink-0 w-[280px] md:w-[320px] overflow-hidden rounded-2xl border border-white/10 transition-all duration-300 snap-start ${
+                    !isDragging ? "hover:border-white/20 hover:shadow-[0_0_24px_rgba(255,255,255,0.08)] hover:scale-[1.02]" : ""
+                  }`}
+                  style={{
+                    willChange: isDragging ? "transform" : "auto",
+                    transform: isDragging ? "translateZ(0)" : undefined,
+                  }}
+                >
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-black/35">
+                    <Image
+                      src={slide.src}
+                      alt={`Работа ${index + 1}`}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      sizes="(max-width: 768px) 280px, 320px"
+                      loading={index < 4 ? "eager" : "lazy"}
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   </div>
-                );
-              })}
+                  <div className="border-t border-white/10 px-5 py-4">
+                    <p className="text-sm font-medium text-foreground/90">
+                      Работа #{index + 1}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
