@@ -402,6 +402,21 @@
   .heroHoneycombPatch{ filter: drop-shadow(0 0 10px rgba(255,255,255,0.22)); }
 }
 
+/* Узкий mobile (≤767px): ещё спокойнее соты и занавес — не спорят с hero */
+@media (max-width: 767px) {
+  .hero-mobile-tune .heroHoneycombBase {
+    opacity: 0.09;
+  }
+  .hero-mobile-tune .heroHoneycombPatch {
+    animation: none;
+    opacity: 0;
+    filter: none;
+  }
+  .hero-mobile-tune .heroHoneycombCover {
+    opacity: 0.12;
+  }
+}
+
 /* === HERO HONEYCOMB COVER: ослаблен, чтобы не перекрывать маску сот === */
 .heroHoneycombCover {
   position: absolute;
