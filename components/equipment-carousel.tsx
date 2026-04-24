@@ -130,10 +130,12 @@ export function EquipmentCarousel() {
   const scroll = (direction: "left" | "right") => {
     if (!scrollContainerRef.current) return;
     const container = scrollContainerRef.current;
-    const cardWidth = 280;
+    const first = container.querySelector<HTMLElement>("[data-equipment-card]");
+    const cardWidth = first?.offsetWidth ?? 280;
     const gap = 24;
-    const scrollAmount = (cardWidth + gap) * 2;
-    
+    const isDesktop = typeof window !== "undefined" && window.matchMedia("(min-width: 1024px)").matches;
+    const scrollAmount = (cardWidth + gap) * (isDesktop ? 2 : 1);
+
     container.scrollBy({
       left: direction === "left" ? -scrollAmount : scrollAmount,
       behavior: "smooth",
@@ -171,15 +173,15 @@ export function EquipmentCarousel() {
   }, []);
 
   return (
-    <section id="equipment" className="relative py-32">
+    <section id="equipment" className="relative overflow-x-hidden py-20 lg:overflow-x-visible lg:py-32">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute right-0 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/3 blur-3xl" />
         <div className="absolute left-0 bottom-1/4 h-80 w-80 rounded-full bg-primary/5 blur-3xl" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-10">
-        <div className="mb-16 section-header">
-          <h2 className="mb-4 text-3xl font-normal leading-tight text-foreground md:text-4xl lg:text-5xl text-balance">
+        <div className="mb-10 section-header lg:mb-16">
+          <h2 className="mb-3 text-2xl font-normal leading-tight text-foreground text-balance sm:text-3xl md:text-4xl lg:mb-4 lg:text-5xl">
             <span className="text-foreground">НАШЕ ОБОРУДОВАНИЕ</span>
           </h2>
           <p className="max-w-2xl text-xs font-light tracking-widest text-foreground/80 uppercase leading-normal">
@@ -188,15 +190,15 @@ export function EquipmentCarousel() {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative">
+        <div className="relative px-11 lg:px-0">
           {/* Left Arrow */}
           {canScrollLeft && (
             <button
               onClick={() => scroll("left")}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 -translate-x-4 lg:-translate-x-8 w-12 h-12 lg:w-14 lg:h-14 rounded-full glass-card flex items-center justify-center hover:bg-white/10 transition-all duration-300 hover:scale-110 group"
+              className="absolute left-0 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full glass-card transition-all duration-300 hover:scale-110 hover:bg-white/10 group lg:left-0 lg:h-14 lg:w-14 lg:-translate-x-8"
               aria-label="Прокрутить влево"
             >
-              <ChevronLeft className="w-6 h-6 lg:w-7 lg:h-7 text-foreground group-hover:text-foreground transition-colors duration-300" />
+              <ChevronLeft className="h-5 w-5 text-foreground transition-colors duration-300 group-hover:text-foreground lg:h-7 lg:w-7" />
             </button>
           )}
 
@@ -204,17 +206,17 @@ export function EquipmentCarousel() {
           {canScrollRight && (
             <button
               onClick={() => scroll("right")}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 translate-x-4 lg:translate-x-8 w-12 h-12 lg:w-14 lg:h-14 rounded-full glass-card flex items-center justify-center hover:bg-white/10 transition-all duration-300 hover:scale-110 group"
+              className="absolute right-0 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full glass-card transition-all duration-300 hover:scale-110 hover:bg-white/10 group lg:right-0 lg:h-14 lg:w-14 lg:translate-x-8"
               aria-label="Прокрутить вправо"
             >
-              <ChevronRight className="w-6 h-6 lg:w-7 lg:h-7 text-foreground group-hover:text-foreground transition-colors duration-300" />
+              <ChevronRight className="h-5 w-5 text-foreground transition-colors duration-300 group-hover:text-foreground lg:h-7 lg:w-7" />
             </button>
           )}
 
           {/* Scrollable Container */}
           <div
             ref={scrollContainerRef}
-            className="flex gap-6 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide pb-4 px-1"
+            className="flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden px-0 pb-4 scrollbar-hide sm:gap-6 lg:px-1"
             style={{
               WebkitOverflowScrolling: "touch",
               touchAction: "pan-x pan-y pinch-zoom",
@@ -224,7 +226,8 @@ export function EquipmentCarousel() {
             {equipmentItems.map((item) => (
               <div
                 key={item.id}
-                className={`group flex-shrink-0 w-[240px] md:w-[280px] p-6 flex flex-col items-center snap-start cursor-pointer relative transition-all duration-300 ${
+                data-equipment-card
+                className={`group relative flex w-[min(280px,calc(100vw-5.5rem))] shrink-0 snap-center flex-col items-center p-4 transition-all duration-300 max-lg:rounded-2xl max-lg:border max-lg:border-white/5 max-lg:bg-black/25 max-lg:backdrop-blur-sm sm:w-[min(280px,calc(100vw-6rem))] md:w-[280px] lg:snap-start lg:p-6 ${
                   isDragging ? "" : "hover:scale-105"
                 }`}
                 style={{
@@ -233,7 +236,7 @@ export function EquipmentCarousel() {
                 }}
               >
                 {/* Image/Icon Container - empty container for image */}
-                <div className="w-full h-[160px] mb-4 flex items-center justify-center relative">
+                <div className="relative mb-4 flex h-[150px] w-full items-center justify-center md:h-[160px]">
                   {item.id === 1 || item.id === 2 || item.id === 3 || item.id === 4 || item.id === 5 || item.id === 6 || item.id === 7 || item.id === 8 || item.id === 9 || item.id === 10 || item.id === 11 ? (
                     // Roland DWX-52D (id: 1), Formlabs Form 3B+ (id: 2), 3Shape TRIOS (id: 3), 3Shape E-series (id: 4), Amann Girrbach (id: 5), Programat (id: 6), Dekema (id: 7), Asiga Max UV (id: 8), VHF K5 (id: 9), Ivoclar (id: 10), and VHF E5 (id: 11) - show real image without cropping
                     <Image
@@ -279,7 +282,7 @@ export function EquipmentCarousel() {
 
                 {/* Content */}
                 <div className="flex flex-col items-center text-center">
-                  <h3 className="text-lg font-normal text-foreground mb-2 group-hover:text-foreground transition-colors duration-300">
+                  <h3 className="mb-2 text-base font-normal leading-snug text-foreground transition-colors duration-300 group-hover:text-foreground md:text-lg">
                     {item.name}
                   </h3>
                   <p className="text-xs font-light text-muted-foreground uppercase tracking-wider">

@@ -29,8 +29,8 @@ const footerLinks = {
 export function DentalFooter() {
   return (
     <footer className="border-t border-border/30 bg-secondary/30">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12">
+      <div className="container mx-auto max-w-full px-4 py-12 sm:px-5 md:py-16">
+        <div className="grid gap-10 md:grid-cols-2 md:gap-12 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-6">

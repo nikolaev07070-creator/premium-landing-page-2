@@ -127,16 +127,16 @@ const priceCards = [
 
 export function PriceSection() {
   return (
-    <section id="price" className="relative py-32">
+    <section id="price" className="relative overflow-x-hidden py-20 lg:overflow-x-visible lg:py-32">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute right-0 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/3 blur-3xl" />
         <div className="absolute left-0 bottom-1/4 h-80 w-80 rounded-full bg-primary/5 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-10">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-10">
         {/* Header */}
-        <div className="mb-16 section-header">
-          <h2 className="mb-4 text-3xl font-normal leading-tight text-foreground md:text-4xl lg:text-5xl text-balance">
+        <div className="mb-10 section-header lg:mb-16">
+          <h2 className="mb-3 text-2xl font-normal leading-tight text-foreground text-balance sm:text-3xl md:text-4xl lg:mb-4 lg:text-5xl">
             <span className="text-foreground">ПРАЙС</span>
           </h2>
           <p className="max-w-2xl text-xs font-light tracking-widest text-foreground/80 uppercase leading-normal">
@@ -145,16 +145,16 @@ export function PriceSection() {
         </div>
 
         {/* Two cards grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
           {priceCards.map((card) => (
             <div
               key={card.title}
-              className="glass-card group flex flex-col rounded-2xl p-6 md:p-8 transition-all duration-300 hover:scale-[1.01] min-h-0"
+              className="glass-card group flex min-h-0 flex-col rounded-2xl p-5 transition-all duration-300 hover:scale-[1.01] md:p-8"
             >
-              <div className="mb-6 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white/5 transition-colors duration-300 group-hover:bg-white/10">
-                <card.icon className="h-7 w-7 text-foreground" />
+              <div className="mb-4 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/5 transition-colors duration-300 group-hover:bg-white/10 md:mb-6 md:h-14 md:w-14">
+                <card.icon className="h-6 w-6 text-foreground md:h-7 md:w-7" />
               </div>
-              <h3 className="mb-5 text-xl font-normal text-foreground md:text-2xl">
+              <h3 className="mb-4 text-lg font-normal leading-snug text-foreground md:mb-5 md:text-xl lg:text-2xl">
                 {card.title}
               </h3>
 

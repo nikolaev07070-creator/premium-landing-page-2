@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function ContactsPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen overflow-x-hidden bg-background lg:overflow-x-visible">
       <DentalHeader />
       <div className="pt-24">
         <DentalContact />

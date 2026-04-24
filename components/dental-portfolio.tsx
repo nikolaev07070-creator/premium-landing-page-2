@@ -145,8 +145,13 @@ export function DentalPortfolio() {
 
   const scrollPortfolio = (direction: "left" | "right") => {
     if (!scrollContainerRef.current) return;
-    const scrollAmount = (PORTFOLIO_CARD_WIDTH + PORTFOLIO_CARD_GAP) * 1.5;
-    scrollContainerRef.current.scrollBy({
+    const container = scrollContainerRef.current;
+    const first = container.querySelector<HTMLElement>("[data-portfolio-card]");
+    const cardWidth = first?.offsetWidth ?? PORTFOLIO_CARD_WIDTH;
+    const isDesktop = typeof window !== "undefined" && window.matchMedia("(min-width: 1024px)").matches;
+    const multiplier = isDesktop ? 1.5 : 1;
+    const scrollAmount = (cardWidth + PORTFOLIO_CARD_GAP) * multiplier;
+    container.scrollBy({
       left: direction === "left" ? -scrollAmount : scrollAmount,
       behavior: "smooth",
     });
@@ -173,15 +178,15 @@ export function DentalPortfolio() {
 
   return (
     <>
-      <section id="portfolio" className="relative py-32">
+      <section id="portfolio" className="relative overflow-x-hidden py-20 lg:overflow-x-visible lg:py-32">
         {/* Background effect */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[100px]" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-10">
-          <div className="mb-16 section-header">
-            <h2 className="mb-4 text-3xl font-normal leading-tight text-foreground md:text-4xl lg:text-5xl text-balance">
+          <div className="mb-10 section-header lg:mb-16">
+            <h2 className="mb-3 text-2xl font-normal leading-tight text-foreground text-balance sm:text-3xl md:text-4xl lg:mb-4 lg:text-5xl">
               <span className="text-foreground">Портфолио</span>
             </h2>
             <p className="max-w-2xl text-xs font-light tracking-widest text-foreground/80 uppercase leading-normal">
@@ -189,30 +194,30 @@ export function DentalPortfolio() {
             </p>
           </div>
 
-          <div className="relative mb-20">
+          <div className="relative mb-14 px-11 lg:mb-20 lg:px-0">
             {canScrollLeft && (
               <button
                 type="button"
                 onClick={() => scrollPortfolio("left")}
-                className="absolute left-0 top-1/2 z-20 -translate-x-4 -translate-y-1/2 lg:-translate-x-8 flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-full glass-card transition-all duration-300 hover:scale-110 hover:bg-white/10"
+                className="absolute left-0 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full glass-card transition-all duration-300 hover:scale-110 hover:bg-white/10 lg:left-0 lg:h-14 lg:w-14 lg:-translate-x-8"
                 aria-label="Прокрутить влево"
               >
-                <ChevronLeft className="h-6 w-6 lg:h-7 lg:w-7 text-foreground" />
+                <ChevronLeft className="h-5 w-5 text-foreground lg:h-7 lg:w-7" />
               </button>
             )}
             {canScrollRight && (
               <button
                 type="button"
                 onClick={() => scrollPortfolio("right")}
-                className="absolute right-0 top-1/2 z-20 translate-x-4 -translate-y-1/2 lg:translate-x-8 flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-full glass-card transition-all duration-300 hover:scale-110 hover:bg-white/10"
+                className="absolute right-0 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full glass-card transition-all duration-300 hover:scale-110 hover:bg-white/10 lg:right-0 lg:h-14 lg:w-14 lg:translate-x-8"
                 aria-label="Прокрутить вправо"
               >
-                <ChevronRight className="h-6 w-6 lg:h-7 lg:w-7 text-foreground" />
+                <ChevronRight className="h-5 w-5 text-foreground lg:h-7 lg:w-7" />
               </button>
             )}
             <div
               ref={scrollContainerRef}
-              className="flex gap-6 overflow-x-auto overflow-y-hidden px-1 pb-4 snap-x snap-mandatory scrollbar-hide"
+              className="flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden pb-4 scrollbar-hide sm:gap-6 lg:px-1"
               style={{
                 WebkitOverflowScrolling: "touch",
                 touchAction: "pan-x pan-y pinch-zoom",
@@ -222,7 +227,8 @@ export function DentalPortfolio() {
               {portfolioCarouselSlides.map((slide, index) => (
                 <div
                   key={slide.id}
-                  className={`glass-card group relative flex-shrink-0 w-[280px] md:w-[320px] overflow-hidden rounded-2xl border border-white/10 transition-all duration-300 snap-start ${
+                  data-portfolio-card
+                  className={`glass-card group relative w-[min(280px,calc(100vw-5.5rem))] shrink-0 snap-center overflow-hidden rounded-2xl border border-white/10 transition-all duration-300 sm:w-[min(300px,calc(100vw-6rem))] md:w-[320px] md:snap-start lg:w-[320px] ${
                     !isDragging ? "hover:border-white/20 hover:shadow-[0_0_24px_rgba(255,255,255,0.08)] hover:scale-[1.02]" : ""
                   }`}
                   style={{
@@ -236,7 +242,7 @@ export function DentalPortfolio() {
                       alt={`Работа ${index + 1}`}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                      sizes="(max-width: 768px) 280px, 320px"
+                      sizes="(max-width: 640px) 85vw, (max-width: 1024px) 280px, 320px"
                       loading={index < 4 ? "eager" : "lazy"}
                     />
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -252,8 +258,8 @@ export function DentalPortfolio() {
           </div>
 
           {/* Кейсы block */}
-          <div className="mb-10 section-header">
-            <h2 className="mb-4 text-3xl font-normal leading-tight text-foreground md:text-4xl lg:text-5xl text-balance">
+          <div className="mb-8 section-header lg:mb-10">
+            <h2 className="mb-3 text-2xl font-normal leading-tight text-foreground text-balance sm:text-3xl md:text-4xl lg:mb-4 lg:text-5xl">
               <span className="text-foreground">Кейсы</span>
             </h2>
             <p className="max-w-2xl text-xs font-light tracking-widest text-foreground/80 uppercase leading-normal">

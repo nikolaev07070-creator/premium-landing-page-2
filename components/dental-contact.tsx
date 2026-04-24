@@ -34,10 +34,10 @@ const contactInfo = [
 
 export function DentalContact() {
   return (
-    <section id="contacts" className="py-24 relative">
-      <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-10">
-        <div className="section-header mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal mb-4">
+    <section id="contacts" className="relative overflow-x-hidden py-16 lg:overflow-x-visible lg:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-10">
+        <div className="section-header mb-10 lg:mb-16">
+          <h2 className="mb-3 text-2xl font-normal leading-tight sm:text-3xl md:text-4xl lg:mb-4 lg:text-5xl">
             <span className="text-foreground">Контакты и </span>
             <span className="text-foreground">расположение</span>
           </h2>
@@ -50,7 +50,7 @@ export function DentalContact() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2 lg:gap-8">
           {/* Contact Info */}
           <div className="space-y-6">
             <div className="grid sm:grid-cols-2 gap-4">
@@ -71,10 +71,10 @@ export function DentalContact() {
             </div>
 
             {/* Messenger Buttons */}
-            <div className="flex gap-3">
+            <div className="flex flex-col gap-3 sm:flex-row">
               <Button
                 asChild
-                className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-foreground h-12"
+                className="h-12 w-full bg-emerald-600 text-foreground hover:bg-emerald-700 sm:flex-1"
               >
                 <a href={SITE.whatsappHref} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-4 h-4 mr-2" />
@@ -83,7 +83,7 @@ export function DentalContact() {
               </Button>
               <Button
                 asChild
-                className="flex-1 bg-blue-500 hover:bg-blue-600 text-foreground h-12"
+                className="h-12 w-full bg-blue-500 text-foreground hover:bg-blue-600 sm:flex-1"
               >
                 <a href={SITE.telegramHref} target="_blank" rel="noopener noreferrer">
                   <Send className="w-4 h-4 mr-2" />
@@ -94,7 +94,7 @@ export function DentalContact() {
           </div>
 
           {/* Map Placeholder */}
-          <div className="glass-card rounded-xl overflow-hidden h-[500px] relative">
+          <div className="relative min-h-0 overflow-hidden rounded-xl glass-card h-[min(420px,55dvh)] sm:h-[480px] lg:h-[500px]">
             <div className="absolute inset-0 bg-secondary/50 flex items-center justify-center">
               <div className="text-center">
                 <MapPin className="w-12 h-12 text-foreground/60 mx-auto mb-4" />

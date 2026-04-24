@@ -35,10 +35,10 @@ export function DentalHeader() {
         isScrolled ? "py-3" : "py-5"
       }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto max-w-full px-4 sm:px-5">
+        <div className="flex min-w-0 items-center justify-between gap-2">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex min-w-0 items-center gap-2 sm:gap-3">
             <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/30 p-0">
               <Image
                 src="/lab/logo.png"
@@ -49,11 +49,11 @@ export function DentalHeader() {
                 priority
               />
             </div>
-            <div className="flex flex-col">
-              <span className="text-lg font-normal tracking-tight leading-tight">
-                <span className="text-foreground">ESTHETIC</span>
+            <div className="flex min-w-0 flex-col">
+              <span className="truncate text-base font-normal leading-tight tracking-tight text-foreground sm:text-lg">
+                ESTHETIC
               </span>
-              <span className="text-xs text-muted-foreground uppercase tracking-wider">
+              <span className="text-[10px] text-muted-foreground uppercase tracking-wider sm:text-xs">
                 Dental Lab
               </span>
             </div>
@@ -83,9 +83,11 @@ export function DentalHeader() {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-foreground"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-white/5 lg:hidden"
+            aria-expanded={isMobileMenuOpen}
+            aria-label={isMobileMenuOpen ? "Закрыть меню" : "Открыть меню"}
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
@@ -100,20 +102,22 @@ export function DentalHeader() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden mt-4 pb-4 border-t border-border/30">
-            <nav className="flex flex-col gap-4 pt-4">
+          <div className="mt-3 max-h-[min(75dvh,560px)] overflow-y-auto overscroll-contain border-t border-border/30 pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] lg:hidden motion-reduce:transition-none animate-in fade-in-0 slide-in-from-top-2 duration-200">
+            <nav className="flex flex-col gap-1 py-3">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider font-medium"
+                  className="flex min-h-12 items-center rounded-lg px-2 py-3 text-base font-medium uppercase tracking-wider text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground active:bg-white/10"
                 >
                   {link.label}
                 </Link>
               ))}
-              <Button asChild className="glow-button bg-primary text-primary-foreground mt-4">
-                <Link href="/contacts" onClick={() => setIsMobileMenuOpen(false)}>ЗАЯВКА</Link>
+              <Button asChild className="glow-button mt-3 h-12 w-full bg-primary text-primary-foreground text-base shrink-0">
+                <Link href="/contacts" onClick={() => setIsMobileMenuOpen(false)}>
+                  ЗАЯВКА
+                </Link>
               </Button>
             </nav>
           </div>

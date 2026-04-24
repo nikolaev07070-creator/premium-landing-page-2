@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <DentalHeader />
-      <main className="min-h-screen bg-background relative" style={{ paddingTop: 'var(--header-h)' }}>
+      <main className="relative min-h-screen overflow-x-hidden bg-background lg:overflow-x-visible" style={{ paddingTop: 'var(--header-h)' }}>
         {/* Grain texture overlay */}
         <div className="grain-overlay fixed inset-0 pointer-events-none z-0" />
         

@@ -9,7 +9,7 @@ const HERO_IMAGE = "/lab/hero-teeth1.png";
 
 export function DentalHero() {
   return (
-    <section className="relative min-h-screen overflow-visible bg-background">
+    <section className="relative min-h-screen overflow-x-hidden bg-background lg:overflow-visible">
       {/* BACKGROUND LAYERS */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Чистые соты */}
@@ -56,32 +56,34 @@ export function DentalHero() {
       </div>
 
       {/* CONTENT */}
-      <div className="relative z-20 min-h-screen flex items-center justify-center overflow-visible">
-        <div className="container mx-auto overflow-visible px-4 pb-12">
-          <div className="mx-auto grid max-w-7xl items-center gap-16 overflow-visible lg:grid-cols-[1fr_1.3fr] lg:gap-24">
+      <div className="relative z-20 flex min-h-screen items-start justify-center overflow-x-hidden pt-6 pb-28 lg:items-center lg:overflow-visible lg:pb-12 lg:pt-0">
+        <div className="container mx-auto w-full max-w-full overflow-x-hidden px-4 sm:px-5 lg:overflow-visible lg:pb-12">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 overflow-x-hidden lg:grid-cols-[1fr_1.3fr] lg:gap-24 lg:overflow-visible">
             {/* Left Content */}
-            <div className="text-left">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal leading-tight mb-8">
+            <div className="order-1 w-full min-w-0 text-left lg:order-none">
+              <h1 className="mb-4 text-3xl font-normal leading-[1.12] text-foreground sm:text-4xl sm:leading-tight md:text-6xl md:leading-tight lg:mb-8 lg:text-7xl lg:leading-tight">
                 <span className="text-foreground block">ЦИФРОВАЯ</span>
                 <span className="text-foreground block">ЗУБОТЕХНИЧЕСКАЯ</span>
                 <span className="text-foreground block">ЛАБОРАТОРИЯ</span>
               </h1>
 
-              <p className="max-w-xl mb-10 text-xs font-light tracking-widest text-foreground/80 uppercase leading-normal">
+              <p className="mb-6 max-w-xl text-[11px] font-light uppercase leading-relaxed tracking-wider text-foreground/80 sm:text-xs md:text-xs md:tracking-widest md:leading-normal lg:mb-10">
                 Высокоточная CAD/CAM обработка, эстетика и стабильное качество для клиник и врачей.
-                <br className="hidden md:block" />
-                Полный цифровой цикл — от скана до готовой работы с контролируемым результатом.
+                <br className="hidden sm:block lg:hidden" />
+                <span className="max-lg:block">
+                  Полный цифровой цикл — от скана до готовой работы с контролируемым результатом.
+                </span>
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex w-full max-w-md flex-col gap-3 md:max-w-none md:flex-row md:gap-4">
                 <Button
                   asChild
                   size="lg"
-                  className="h-14 text-lg glow-button bg-primary text-primary-foreground hover:bg-primary/90 px-8"
+                  className="h-12 w-full shrink-0 text-base glow-button bg-primary text-primary-foreground hover:bg-primary/90 px-6 md:h-14 md:w-auto md:text-lg md:px-8"
                 >
-                  <Link href="/contacts">
+                  <Link href="/contacts" className="inline-flex items-center justify-center">
                     ЗАКАЗАТЬ РАСЧЕТ
-                    <ArrowRight className="w-5 h-5 ml-2" />
+                    <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
 
@@ -89,24 +91,26 @@ export function DentalHero() {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="h-14 text-lg border-primary/30 text-foreground hover:bg-primary/10 px-8"
+                  className="h-12 w-full shrink-0 text-base border-primary/30 text-foreground hover:bg-primary/10 px-6 md:h-14 md:w-auto md:text-lg md:px-8"
                 >
-                  <Link href="/#services">НАШИ УСЛУГИ</Link>
+                  <Link href="/#services" className="inline-flex items-center justify-center">
+                    НАШИ УСЛУГИ
+                  </Link>
                 </Button>
               </div>
             </div>
 
-            {/* Right Side - Hero Image (крупная, у правого края, частично за экраном) */}
-            <div className="relative min-h-[280px] w-full overflow-visible lg:min-h-[640px]">
-              <div className="pointer-events-none absolute right-[-120px] top-1/2 h-[800px] w-[800px] -translate-y-1/2">
+            {/* Right Side - Hero Image: на mobile под текстом, без перекрытия; на lg — как раньше */}
+            <div className="order-2 relative mx-auto mt-4 flex w-full max-w-[min(100%,320px)] justify-center sm:max-w-[360px] lg:order-none lg:mx-0 lg:mt-0 lg:min-h-[640px] lg:max-w-none lg:justify-end">
+              <div className="relative h-[240px] w-full max-w-[280px] sm:h-[280px] sm:max-w-[320px] lg:pointer-events-none lg:absolute lg:right-[-120px] lg:top-1/2 lg:h-[800px] lg:max-w-none lg:w-[800px] lg:-translate-y-1/2">
                 <Image
                   src={HERO_IMAGE}
                   alt="Hero"
                   width={800}
                   height={800}
-                  className="h-full w-full scale-125 object-contain"
+                  className="h-full w-full object-contain lg:scale-125"
                   priority
-                  sizes="(max-width: 640px) 100vw, 800px"
+                  sizes="(max-width: 1023px) 320px, 800px"
                 />
               </div>
             </div>
@@ -114,8 +118,8 @@ export function DentalHero() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 animate-bounce">
+      {/* Scroll Indicator — только lg+, на телефоне не перекрывает CTA */}
+      <div className="absolute bottom-8 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-2 animate-bounce lg:flex">
         <span className="text-xs text-muted-foreground uppercase tracking-widest">Листайте</span>
         <div className="w-px h-8 bg-gradient-to-b from-white/40 to-transparent" />
       </div>
