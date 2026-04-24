@@ -82,25 +82,26 @@ export function DentalHero() {
               </p>
             </div>
 
-            {/* Hero image — на narrow mobile между текстом и кнопками; на lg справа как раньше */}
+            {/* Hero image — mobile: full-bleed stage, рука уходит за правый край (клип у viewport), статуя читается; md/lg без изменений логики */}
             <div className="max-md:order-2 md:order-3 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:order-none">
-              <div className="relative mx-auto flex w-full justify-center max-md:mt-1 max-md:max-w-[min(100%,268px)] md:mx-auto md:mt-4 md:max-w-[min(100%,360px)] lg:mx-0 lg:mt-0 lg:min-h-[640px] lg:max-w-none lg:justify-end">
-                <div className="relative mx-auto w-full max-w-[260px] overflow-hidden max-md:aspect-[5/4] max-md:max-h-[198px] max-md:max-w-[232px] md:h-[280px] md:max-h-none md:max-w-[320px] lg:pointer-events-none lg:absolute lg:right-[-120px] lg:top-1/2 lg:mx-0 lg:aspect-auto lg:h-[800px] lg:max-w-none lg:w-[800px] lg:-translate-y-1/2 lg:overflow-visible">
+              {/* max-md: полоса на ширину viewport — overflow-x-clip режет вылет справа без горизонтального скролла страницы */}
+              <div className="max-md:relative max-md:mt-1 max-md:ml-[calc(50%-50vw)] max-md:w-screen max-md:max-w-[100dvw] max-md:overflow-x-clip max-md:overflow-y-visible md:relative md:mx-auto md:mt-4 md:flex md:w-full md:max-w-[min(100%,360px)] md:justify-center md:overflow-visible lg:mx-0 lg:mt-0 lg:min-h-[640px] lg:max-w-none lg:justify-end">
+                <div className="relative mx-auto w-full max-w-[260px] md:h-[280px] md:max-w-[320px] lg:pointer-events-none lg:absolute lg:right-[-120px] lg:top-1/2 lg:mx-0 lg:h-[800px] lg:max-w-none lg:w-[800px] lg:-translate-y-1/2 lg:overflow-visible max-md:z-0 max-md:mx-0 max-md:flex max-md:h-[clamp(218px,56vw,246px)] max-md:w-full max-md:max-w-[min(440px,calc(100vw+48px))] max-md:items-center max-md:justify-start max-md:overflow-visible max-md:pl-1 max-md:pr-0">
                   <Image
                     src={HERO_IMAGE}
                     alt="Hero"
                     width={800}
                     height={800}
-                    className="h-full w-full max-md:scale-[0.92] max-md:object-contain max-md:object-[42%_55%] md:object-contain lg:scale-125 lg:object-contain lg:object-center"
+                    className="h-full w-full object-contain md:translate-x-0 md:scale-100 lg:scale-125 lg:object-center lg:object-contain max-md:h-full max-md:max-h-[250px] max-md:w-[min(126%,460px)] max-md:max-w-none max-md:object-contain max-md:object-[38%_54%] max-md:[transform:translate3d(clamp(12px,3.8vw,30px),0,0)_scale(1.085)] max-md:[transform-origin:40%_56%]"
                     priority
-                    sizes="(max-width: 767px) 240px, (max-width: 1023px) 320px, 800px"
+                    sizes="(max-width: 767px) 100vw, (max-width: 1023px) 320px, 800px"
                   />
                 </div>
               </div>
             </div>
 
             {/* Кнопки — на ≤767px после изображения; на md перед изображением; на lg под текстом в левой колонке */}
-            <div className="flex w-full max-w-md flex-col gap-3 max-md:order-3 max-md:max-w-full md:order-2 md:max-w-none md:flex-row md:gap-4 lg:col-start-1 lg:row-start-2 lg:max-w-none lg:flex-row lg:gap-4">
+            <div className="flex w-full max-w-md flex-col gap-3 max-md:relative max-md:z-10 max-md:order-3 max-md:max-w-full md:order-2 md:max-w-none md:flex-row md:gap-4 lg:col-start-1 lg:row-start-2 lg:max-w-none lg:flex-row lg:gap-4">
               <Button
                 asChild
                 size="lg"
