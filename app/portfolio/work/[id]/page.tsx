@@ -8,7 +8,7 @@ type Props = { params: Promise<{ id: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   return {
-    title: `Работа #${id} — Портфолио | Esthetic Dental Lab`,
+    title: `Кейс #${id} — Портфолио | Esthetic Dental Lab`,
     description: "Пример работы из портфолио лаборатории.",
   };
 }
@@ -23,15 +23,15 @@ export default async function PortfolioWorkPage({ params }: Props) {
         <div className="pt-24 pb-16">
           <section className="relative py-20">
             <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-10">
-              <div className="section-header mb-12">
-                <p className="mb-3 text-sm font-medium uppercase tracking-wider text-foreground/80">
-                  Портфолио
+              <div className="section-header mb-12 max-w-3xl">
+                <p className="mb-2 text-xs font-medium uppercase tracking-widest text-primary">
+                  ЦИРКОНИЙ • ПОРТФОЛИО
                 </p>
-                <h1 className="mb-4 text-3xl font-normal text-foreground md:text-4xl lg:text-5xl">
-                  Работа #{id}
+                <h1 className="mb-4 text-3xl font-normal uppercase leading-tight text-foreground md:text-4xl lg:text-5xl">
+                  КЕЙС #{id}
                 </h1>
-                <p className="max-w-2xl text-muted-foreground">
-                  Страница в разработке. Скоро здесь появится полное описание и фото этапов.
+                <p className="text-sm font-light tracking-wide text-foreground/80 md:text-base">
+                  Подробная галерея этапов работы и финального результата.
                 </p>
               </div>
               <Link
